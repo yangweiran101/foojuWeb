@@ -200,6 +200,7 @@
                 </div>
             </div>
             <!--选项卡结束-->
+
             <!--房源列表开始-->
             <div class="list-top">
                 <div class="list-sort">
@@ -219,54 +220,65 @@
                 </div>
                 <div class="list-altogether">
                     共找到
-                    <span class="total" style="color: #c30d23">6666</span>套
+                    <span class="total" style="color: #c30d23">{{houseCount}}</span>套
                     <span>呼和浩特</span>
                     <span>小区</span>
                 </div>
             </div>
             <!--房源列表结束-->
+
             <!--房源简介开始-->
-            <div class="list-content clearfix">
-                <div class="list-item clearfix">
+            <div class="list-content clearfix" v-for="item in houseArr">
+                <div class="list-item clearfix" >
                     <div class="list-left">
                         <a href="#">
-                            <img src="../assets/img/housefirst.png" alt="">
+                            <img :src="'http://www.fooju.cn'+item.pic">
                         </a>
                     </div>
                     <div class="list-center">
                         <div class="benefit">
                             <a href="#">
-                                桥华世纪村嘉华园
+                                {{item.title}}
                             </a>
                         </div>
                         <div class="introduce">
-                            <span>桥华世纪村嘉华园</span>
-                            | <span>0室0厅</span>
-                            | <span>西</span>
-                            | <span>380.00平</span>
+                            <span>{{item.village}}|</span>
+                            <span>{{item.bedroom}}室{{item.livingroom}}厅|</span>
+                            <span>{{item.direction}}|</span>
+                            <span>{{item.region}}|</span>
+                            <span>{{item.built_area}}平</span>
                         </div>
                         <div class="built">
-                            <span>中楼层</span>
+                            <span>{{item.floor}}/{{item.floor_totle}}层|</span>
+                            <span>{{item.decoration}}|</span>
+                            <span>{{item.age}}年建|</span>
+                            <span>{{item.type}}</span>
                         </div>
                     </div>
                     <div class="list-right">
                         <div class="price">
-                            <span style="font-size: 40px">400000</span>
-                            元/月
+                            <span style="font-size: 40px">{{item.rent}}</span>
+                            <span>{{item.rent_type}}</span>
                         </div>
                         <div class="update">
-                            <span>2018-06-25</span>
+                            <span>{{item.edittime}}</span>
                             更新
                         </div>
                         <div class="update">
-                            浏览<span>5</span>
-                            次
+                            浏览<span>{{item.v_id}}</span>次
                         </div>
                         <a href="#" class="follow">关注</a>
                     </div>
                 </div>
             </div>
             <!--房源简介结束-->
+
+            <!--分页条开始-->
+            <div class="pages-tool">
+                <el-pagination background layout="prev, pager, next" :total="1000" class="pages-item">
+                </el-pagination>
+            </div>
+            <!--分页条结束-->
         </div>
         <Footer></Footer>
     </div>
@@ -295,7 +307,6 @@
                 },
             }
         },
-
         data () {
             return {
                 isShow:false,
@@ -485,6 +496,13 @@
                     bulit_area:true,
                     floor_type:true
                 },
+                params: {
+                    page_size: 10,
+                    page_num: 1,
+                    order: 1
+                },
+                houseCount:0,
+                houseArr:[]
             }
         },
         methods:{
@@ -502,9 +520,8 @@
             handleClearAll(){
                 let formData = this.formData;
                 for (let arr in formData){
-                    if (formData[arr]instanceof Array){
+                    if (formData[arr] instanceof Array){
                         formData[arr].splice(0);
-
                     }
                 }
             },
@@ -519,6 +536,32 @@
                 }else {
                     this.isChecked[key] = true;
                 }
+            },
+            getData(){
+                let formData = this.formData;
+                let params = {...this.params};
+                for (let key in formData){
+                    if (formData[key]instanceof Array&&formData[key].length>0){
+                        params[key] = formData[key].map(item => item.id)
+                    }
+                }
+                // if(this.userid){
+                //     params.userid = this.userid
+                // }
+                const loading = this.$loading({
+                    lock: true,
+                    text: '数据加载中...',
+                    spinner: 'el-icon-loading',
+                    background: 'rgba(0, 0, 0, 0.7)'
+                });
+                axios.get(api.paramToUrl(api.retal_lists, params)).then(res => {
+                    this.houseCount = res.data.count;
+                    this.houseArr = res.data.data;
+                    console.log(res)
+                    loading.close()
+                }).catch(err => {
+                    loading.close()
+                })
             }
         },
         created(){
@@ -538,9 +581,15 @@
               }
               return allData;
           },
-            getData(){
 
+        },
+        watch:{
+            selectedData(){
+                this.getData()
             }
+        },
+        mounted(){
+          this.getData();
         },
         directives:{
             trans:{
@@ -584,6 +633,11 @@
     .el-checkbox__inner::after{
         top: 3px;
         left: 7px;
+    }
+    .el-pagination.is-background .el-pager li:not(.disabled).active{
+        background-color:#5f1985;
+        color: #fff;
+        border: 1px solid #5f1985;
     }
 </style>
 
@@ -1083,6 +1137,14 @@
                     display: inline-block;
                 }
             }
+        }
+    }
+    .pages-tool{
+        margin-top: 30px;
+        font-size: 12px;
+        color: #666;
+        .pages-item{
+            text-align: right;
         }
     }
 }
