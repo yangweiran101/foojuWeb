@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="556cd546-c7a4-4391-9996-3b5c7894abf0" name="Default" comment="ReadMe">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="556cd546-c7a4-4391-9996-3b5c7894abf0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/village.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/village.vue" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -29,15 +29,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="rentHouse.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="rentHouse.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/rentHouse.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-355">
-              <caret line="259" column="78" selection-start-line="259" selection-start-column="78" selection-end-line="259" selection-end-column="78" />
+            <state relative-caret-position="296">
+              <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
               <folding>
                 <element signature="n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#2;n#div#1;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#div#0;n#slot#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#div#1;n#slot#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#template#0;n#!!top" />
@@ -55,14 +54,47 @@
                 <element signature="n#div#6;n#slot#0;n#div#0;n#div#1;n#div#0;n#div#2;n#div#1;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#div#7;n#slot#0;n#div#0;n#div#1;n#div#0;n#div#2;n#div#1;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#div#2;n#div#0;n#div#2;n#div#1;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#3;n#div#1;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#div#0;n#div#3;n#div#1;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#div#0;n#div#0;n#div#3;n#div#1;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#div#3;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#button#1;n#div#0;n#div#0;n#div#3;n#div#1;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#style#0;n#span#0;n#div#1;n#div#3;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#div#4;n#div#1;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#div#1;n#div#0;n#div#4;n#div#1;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#style#0;n#span#0;n#div#0;n#div#2;n#div#0;n#div#4;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="village.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pages/village.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="301">
+              <caret line="191" column="24" lean-forward="true" selection-start-line="191" selection-start-column="24" selection-end-line="191" selection-end-column="24" />
+              <folding>
+                <element signature="n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#2;n#div#1;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#style#0;n#!!top" />
+                <element signature="e#17828#18692#0" />
+                <element signature="e#18721#19516#0" />
+                <element signature="e#19551#20346#0" />
+                <element signature="e#20387#23099#0" />
+                <element signature="e#23127#23764#0" />
+                <element signature="e#25189#25730#0" />
+                <element signature="e#25972#26141#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mainApi/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="407">
+              <caret line="29" column="17" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -98,7 +130,6 @@
         <option value="$PROJECT_DIR$/pages/index.vue" />
         <option value="$PROJECT_DIR$/layouts/default.vue" />
         <option value="$PROJECT_DIR$/assets/css/main.css" />
-        <option value="$PROJECT_DIR$/pages/village.vue" />
         <option value="$PROJECT_DIR$/components/Header.vue" />
         <option value="$PROJECT_DIR$/pages/broker.vue" />
         <option value="$PROJECT_DIR$/assets/css/iconfont.css" />
@@ -110,6 +141,7 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/pages/rentHouse.vue" />
+        <option value="$PROJECT_DIR$/pages/village.vue" />
       </list>
     </option>
   </component>
@@ -278,7 +310,10 @@
       <workItem from="1530513392160" duration="10272000" />
       <workItem from="1530579190281" duration="16731000" />
       <workItem from="1530608242450" duration="5680000" />
-      <workItem from="1530617740959" duration="813000" />
+      <workItem from="1530617740959" duration="4752000" />
+      <workItem from="1530627667686" duration="500000" />
+      <workItem from="1530667317665" duration="3601000" />
+      <workItem from="1530671971164" duration="2768000" />
     </task>
     <task id="LOCAL-00001" summary="更改readme">
       <created>1530588441433</created>
@@ -301,22 +336,39 @@
       <option name="project" value="LOCAL" />
       <updated>1530614055652</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="ReadMe">
+      <created>1530618580336</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1530618580336</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="238543000" />
+    <option name="totallyTimeSpent" value="249351000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6729958" visible="true" weight="0.12879789" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.66945606" visible="true" weight="0.12879789" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32956153" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5006605" side_tool="true" weight="0.32531825" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="9" visible="true" weight="0.32956153" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4993395" weight="0.32531825" />
-      <window_info id="npm" order="2" sideWeight="0.32700422" side_tool="true" visible="true" weight="0.12879789" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32956153" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4993395" visible="true" weight="0.32390383" />
+      <window_info id="npm" order="2" sideWeight="0.33054394" side_tool="true" visible="true" weight="0.12879789" />
       <window_info id="Structure" order="1" sideWeight="0.30989584" side_tool="true" weight="0.12879789" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.45762712" />
       <window_info id="Favorites" order="3" sideWeight="0.30989584" side_tool="true" weight="0.12879789" />
@@ -335,19 +387,19 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info id="npm" order="2" sideWeight="0.31042653" side_tool="true" weight="0.12879789" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.68957347" visible="true" weight="0.12879789" />
       <window_info id="Structure" order="1" sideWeight="0.30989584" side_tool="true" weight="0.12879789" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.18502825" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.45762712" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Favorites" order="3" sideWeight="0.30989584" side_tool="true" weight="0.12879789" />
     </layout-to-restore>
   </component>
@@ -385,9 +437,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="更改readme" />
-    <MESSAGE value="ReadMe" />
     <MESSAGE value="租房页面完成" />
-    <option name="LAST_COMMIT_MESSAGE" value="租房页面完成" />
+    <MESSAGE value="ReadMe" />
+    <option name="LAST_COMMIT_MESSAGE" value="ReadMe" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -403,7 +455,7 @@
           <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="35" />
+      <option name="time" value="36" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -421,7 +473,6 @@
           <folding>
             <element signature="n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#div#2;n#div#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#div#0;n#slot#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#div#1;n#slot#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#template#0;n#!!top" />
@@ -439,11 +490,13 @@
             <element signature="n#div#6;n#slot#0;n#div#0;n#div#1;n#div#0;n#div#2;n#div#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#div#7;n#slot#0;n#div#0;n#div#1;n#div#0;n#div#2;n#div#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#div#2;n#div#0;n#div#2;n#div#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#3;n#div#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#div#0;n#div#3;n#div#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#div#0;n#div#0;n#div#3;n#div#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#div#3;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#button#1;n#div#0;n#div#0;n#div#3;n#div#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#style#0;n#span#0;n#div#1;n#div#3;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#div#4;n#div#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#div#1;n#div#0;n#div#4;n#div#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#style#0;n#span#0;n#div#0;n#div#2;n#div#0;n#div#4;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
           </folding>
@@ -722,13 +775,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/village.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1665">
-          <caret line="84" column="12" selection-start-line="84" selection-start-column="12" selection-end-line="106" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/css/iconfont.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="470">
@@ -797,21 +843,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mainApi/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="4" column="15" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/rentHouse.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-355">
-          <caret line="259" column="78" selection-start-line="259" selection-start-column="78" selection-end-line="259" selection-end-column="78" />
+        <state relative-caret-position="296">
+          <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
           <folding>
             <element signature="n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#div#2;n#div#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#div#0;n#slot#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#div#1;n#slot#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#template#0;n#!!top" />
@@ -829,13 +867,42 @@
             <element signature="n#div#6;n#slot#0;n#div#0;n#div#1;n#div#0;n#div#2;n#div#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#div#7;n#slot#0;n#div#0;n#div#1;n#div#0;n#div#2;n#div#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#div#2;n#div#0;n#div#2;n#div#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#3;n#div#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#div#0;n#div#3;n#div#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#div#0;n#div#0;n#div#3;n#div#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#div#3;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#button#1;n#div#0;n#div#0;n#div#3;n#div#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#style#0;n#span#0;n#div#1;n#div#3;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#div#4;n#div#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#div#1;n#div#0;n#div#4;n#div#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#style#0;n#span#0;n#div#0;n#div#2;n#div#0;n#div#4;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mainApi/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="29" column="17" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/village.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="191" column="24" lean-forward="true" selection-start-line="191" selection-start-column="24" selection-end-line="191" selection-end-column="24" />
+          <folding>
+            <element signature="n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#2;n#div#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#style#0;n#!!top" />
+            <element signature="e#17828#18692#0" />
+            <element signature="e#18721#19516#0" />
+            <element signature="e#19551#20346#0" />
+            <element signature="e#20387#23099#0" />
+            <element signature="e#23127#23764#0" />
+            <element signature="e#25189#25730#0" />
+            <element signature="e#25972#26141#0" />
           </folding>
         </state>
       </provider>
