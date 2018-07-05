@@ -95,7 +95,7 @@
 
             <!--分页条开始-->
             <div class="pages-tool">
-                <el-pagination background layout="prev, pager, next" :total="1000" class="pages-item">
+                <el-pagination background layout="prev, pager, next" :total="1000" class="pages-item" @current-change="handleNext">
                 </el-pagination>
             </div>
             <!--分页条结束-->
@@ -154,6 +154,11 @@
             }
         },
         methods:{
+            handleNext(val){
+                console.log(val);
+                this.params.page_num = val;
+                this.getData()
+            },
             handleClear(key){
                 if (this.isChecked[key]){
                     this.formData[key].splice(0);
