@@ -53,19 +53,45 @@
             </div>
             <!--选项卡结束-->
 
-            <!--房源列表开始-->
+            <!--经纪人列表开始-->
             <div class="list-top">
-                <div class="list-altogether">
+                <div class="list-altoget her" >
                     共找到
                     <span class="total" style="color: #c30d23">{{houseCount}}</span>名
                     <span>经纪人</span>
                 </div>
+                <div class="agent-list" v-for="item in houseArr">
+                    <div class="list-content clearfix">
+                        <a href="#">
+                            <div class="left1">
+                                <img :src="'http://www.fooju.cn'+item.face_pc">
+                            </div>
+                            <div class="left2">
+                                <span>{{item.agent_name}}</span>
+                                <div class="mendian">
+                                    所属门店：<span>{{item.store_name}}</span>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="left3">
+                                <div class="score">
+                                    综合评分：<span>{{item.avg_score}}</span>
+                                </div>
+                                <div class="strip">
+                                    评论 <span>0</span>条
+                                </div>
+                            </div>
+                        <div class="left4">
+                            <div class="phone">
+                                <span>{{item.f_phone}}</span>转
+                                <span>{{item.phone}}</span>
+                            </div>
+                            <div class="way" style="margin-top: 20px">联系方式</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!--房源列表结束-->
-
-            <!--房源简介开始-->
-
-            <!--房源简介结束-->
+            <!--经纪人列表结束-->
 
             <!--分页条开始-->
             <div class="pages-tool">
@@ -105,7 +131,7 @@
             return {
                 formData:{
                     r_id:[],
-                    bedroom:[],
+                    bulit_area:[],
                 },
                 fillData:{
                     bulit_area:[
@@ -326,10 +352,62 @@
         }
         .list-top{
             margin-top: 80px;
-            font-size: 30px;
             color: #333;
             .list-altogether{
                 margin-top: 40px;
+                font-size: 30px;
+            }
+            .agent-list{
+                margin-top: 50px;
+                .list-content{
+                    padding-bottom: 30px;
+                    font-size: 18px;
+                    border-bottom: 1px solid #333;
+                    a{
+                        cursor: pointer;
+                        text-decoration: none;
+                        .left1{
+                            float: left;
+                            color: #000;
+                            img{
+                                width: 100px;
+                                height: 100px;
+                                border-radius: 50%;
+                                border-style: none;
+                            }
+                        }
+                        .left2{
+                            margin: 7px 0 0 25px;
+                            width: 200px;
+                            float: left;
+                            .mendian{
+                                color: #333;
+                                margin-top: 20px;
+                            }
+                        }
+
+                    }
+                    .left3{
+                        text-align: center;
+                        margin: 11px 0 0 250px;
+                        float: left;
+                        .score{
+                            font-size: 20px;
+                            color: #c30d23;
+                        }
+                        .strip{
+                            color: #333;
+                            margin-top: 20px;
+                        }
+                    }
+                    .left4{
+                        margin-top: 11px;
+                        text-align: right;
+                        color: #333;
+                        float: right;
+                    }
+                }
+
             }
         }
         .pages-tool{
