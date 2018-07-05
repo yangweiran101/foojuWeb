@@ -1,6 +1,6 @@
 <template>
     <div class="box">
-        <Header></Header>
+        <vHeader></vHeader>
         <div class="nonebox"></div>
         <div class="content">
             <div class="content-top">
@@ -19,102 +19,178 @@
             <!--选项卡开始-->
             <div class="select">
                 <div class="content-select">
-                    <!--区域开始-->
-                    <div class="select-address clearfix">
-                        <span>区域</span>
-                        <el-checkbox-group fill="#c30d23" text-color="#c30d23" v-model="checkList" class="select-items">
-                            <el-checkbox label="不限" class="item"></el-checkbox>
-                            <el-checkbox label="金桥开发区" class="item"></el-checkbox>
-                            <el-checkbox label="如意开发区" class="item"></el-checkbox>
-                            <el-checkbox label="玉泉区" class="item"></el-checkbox>
-                            <el-checkbox label="回民区" class="item"></el-checkbox>
-                            <el-checkbox label="赛罕区" class="item"></el-checkbox>
-                            <el-checkbox label="新城区" class="item"></el-checkbox>
-                        </el-checkbox-group>
+                    <div class="select-top">
+                        <!--区域开始-->
+                        <div class="select-address clearfix">
+                            <span>区域</span>
+                            <div class="select-items">
+                                <el-checkbox class="item" v-model="isChecked.r_id" @change="handleClear('r_id')">不限</el-checkbox>
+                                <el-checkbox-group v-model="formData.r_id" >
+                                    <el-checkbox   v-for="item in fillData2.r_idData" :label="item" :key="item.id" @change="handleChange('r_id')" class="item">
+                                        {{item.title}}
+                                    </el-checkbox>
+                                </el-checkbox-group>
+                            </div>
+                        </div>
+                        <!--区域结束-->
+
+                        <!--类型开始-->
+                        <div class="select-area clearfix">
+                            <span>面积</span>
+                            <div class="select-items">
+                                <el-checkbox class="item" v-model="isChecked.bulit_area" @change="handleClear('bulit_area')">不限</el-checkbox>
+                                <el-checkbox-group v-model="formData.bulit_area" >
+                                    <el-checkbox v-for="item in fillData.bulit_area" :label="item" :key="item.id" class="item" @change="handleChange('bulit_area')">
+                                        {{item.title}}
+                                    </el-checkbox>
+                                </el-checkbox-group>
+                            </div>
+                        </div>
+                        <!--类型结束-->
+
                     </div>
-                    <!--区域结束-->
-                    <!--筛选开始-->
-                    <div class="select-price clearfix">
-                        <span>筛选</span>
-                        <el-checkbox-group fill="#c30d23" text-color="#c30d23" v-model="checkList" class="select-items">
-                            <el-checkbox label="默认" class="item"></el-checkbox>
-                            <el-checkbox label="综合评分从高到低" class="item"></el-checkbox>
-                            <el-checkbox label="成交量从高到低" class="item"></el-checkbox>
-                            <el-checkbox label="带看量从高到低" class="item"></el-checkbox>
-                        </el-checkbox-group>
-                    </div>
-                    <!--筛选结束-->
                 </div>
             </div>
             <!--选项卡结束-->
-            <!--房源简介开始-->
+
+            <!--房源列表开始-->
             <div class="list-top">
                 <div class="list-altogether">
                     共找到
-                    <span class="total" style="color: #c30d23">477</span>名
+                    <span class="total" style="color: #c30d23">{{houseCount}}</span>名
                     <span>经纪人</span>
                 </div>
             </div>
-            <div class="list-content clearfix">
-                <div class="list-item clearfix">
-                    <div class="list-left">
-                        <a href="#">
-                            <img src="../assets/img/housefirst.png" alt="">
-                        </a>
-                    </div>
-                    <div class="list-center">
-                        <div class="benefit">
-                            <a href="#">
-                                桥华世纪村嘉华园
-                            </a>
-                        </div>
-                        <div class="introduce">
-                            <span>桥华世纪村嘉华园</span>
-                            | <span>0室0厅</span>
-                            | <span>西</span>
-                            | <span>380.00平</span>
-                        </div>
-                        <div class="built">
-                            <span>中楼层</span>
-                        </div>
-                    </div>
-                    <div class="list-right">
-                        <div class="price">
-                            <span style="font-size: 40px">400000</span>
-                            元/月
-                        </div>
-                        <div class="update">
-                            <span>2018-06-25</span>
-                            更新
-                        </div>
-                        <div class="update">
-                            浏览<span>5</span>
-                            次
-                        </div>
-                        <a href="#" class="follow">关注</a>
-                    </div>
-                </div>
-            </div>
+            <!--房源列表结束-->
+
+            <!--房源简介开始-->
+
             <!--房源简介结束-->
+
+            <!--分页条开始-->
+            <div class="pages-tool">
+                <el-pagination background layout="prev, pager, next" :total="1000" class="pages-item">
+                </el-pagination>
+            </div>
+            <!--分页条结束-->
         </div>
         <Footer></Footer>
     </div>
 </template>
 
 <script>
-    import Header from '~/components/Header.vue'
+    import vHeader from '~/components/Header.vue'
     import Footer from '~/components/Footer.vue'
+    import axios from '~/plugins/axios'
+    import api from '~/mainApi/index'
     export default {
-        name: "broker",
+        name: "village",
         components:{
-            Header,
+            vHeader,
             Footer
+        },
+        async asyncData(){
+            let r_idData = await axios.get(api.paramToUrl(api.regionLists,{city:"呼和浩特"}))
+            r_idData.data.data = r_idData.data.data.map(item =>{
+                item.title = item.area;
+                return item;
+            })
+            return {
+                fillData2:{
+                    r_idData:r_idData.data.data
+                },
+            }
         },
         data () {
             return {
-                checkList: []
-            };
-        }
+                formData:{
+                    r_id:[],
+                    bedroom:[],
+                },
+                fillData:{
+                    bulit_area:[
+                        {title:"综合评分由高到低", id:'1'},
+                        {title:"成交量由高到低", id:'2'},
+                        {title:"带看量由高到低", id:'3'},
+                    ],
+                },
+                isChecked:{
+                    r_id:true,
+                    bulit_area:true,
+                },
+                params: {
+                    page_size: 10,
+                    page_num: 1,
+                    order: 1
+                },
+                houseCount:0,
+                houseArr:[]
+            }
+        },
+        methods:{
+            handleClear(key){
+                if (this.isChecked[key]){
+                    this.formData[key].splice(0);
+                }
+            },
+            handleChange(key){
+                if(this.formData[key].length>0){
+                    this.isChecked[key] = false;
+                }else {
+                    this.isChecked[key] = true;
+                }
+            },
+            getData(){
+                let formData = this.formData;
+                let params = {...this.params};
+                for (let key in formData){
+                    if (formData[key]instanceof Array&&formData[key].length>0){
+                        params[key] = formData[key].map(item => item.id)
+                    }
+                }
+                // if(this.userid){
+                //     params.userid = this.userid
+                // }
+                const loading = this.$loading({
+                    lock: true,
+                    text: '数据加载中...',
+                    spinner: 'el-icon-loading',
+                    background: 'rgba(0, 0, 0, 0.7)'
+                });
+                axios.get(api.paramToUrl(api.agentLists, params)).then(res => {
+                    this.houseCount = res.data.count;
+                    this.houseArr = res.data.data;
+                    console.log(res)
+                    loading.close()
+                }).catch(err => {
+                    loading.close()
+                })
+            }
+        },
+        computed:{
+            selectedData(){
+                let formData = this.formData;
+                let allData = [];
+                for (let key in formData){
+                    if (formData[key]instanceof Array){
+                        formData[key].forEach(item =>{
+                            item._parentName = [key]
+                            allData.push(item)
+                        })
+                    }
+                }
+                return allData;
+            },
+
+        },
+        watch:{
+            selectedData(){
+                this.getData()
+            }
+        },
+        mounted(){
+            this.getData();
+        },
     }
 </script>
 <style>
@@ -122,14 +198,23 @@
         color: #c30d23;
     }
     .el-checkbox__inner{
-        width: 18px;
-        height: 18px;
+        width: 20px;
+        height: 20px;
     }
     .el-checkbox__input.is-checked .el-checkbox__inner, .el-checkbox__input.is-indeterminate .el-checkbox__inner{
         background-color:#c30d23 ;
         border-color: #c30d23;
-        width: 18px;
-        height: 18px;
+        width: 20px;
+        height: 20px;
+    }
+    .el-checkbox__inner::after{
+        top: 3px;
+        left: 7px;
+    }
+    .el-pagination.is-background .el-pager li:not(.disabled).active{
+        background-color:#5f1985;
+        color: #fff;
+        border: 1px solid #5f1985;
     }
 </style>
 
@@ -188,120 +273,53 @@
         }
         .content-select{
             margin-top: 40px;
-            padding-bottom: 5px;
-            border-bottom: 1px solid #ccc;
-            .select-address{
-                padding-right: 300px;
-                span{
-                    font-size: 14px;
-                    color: #333;
-                    padding-right: 20px;
-                    float: left;
-                    display: block;
-                }
-                .select-items{
-                    margin-left: 20px;
-                    cursor: pointer;
-                    width: 76%;
-                    float: left;
-                    .item{
-                        margin: 0 0 20px 20px;
-                        cursor: pointer;
-                        float: left;
-                        color: #999;
-                    }
-                }
 
-            }
-            .select-price{
-                padding-right: 300px;
-                span{
-                    font-size: 14px;
-                    color: #333;
-                    padding-right: 20px;
-                    float: left;
-                    display: block;
-                }
-                .select-items{
-                    margin-left: 20px;
-                    cursor: pointer;
-                    width: 75%;
-                    float: left;
-                    .item{
-                        margin: 0 0 20px 20px;
-                        cursor: pointer;
+            .select-top{
+                padding-bottom: 30px;
+                border-bottom: 1px solid #ccc;
+                .select-address{
+                    padding-right: 300px;
+                    span{
+                        font-size: 14px;
+                        color: #333;
+                        padding-right: 20px;
                         float: left;
-                        color: #999;
+                        display: block;
+                    }
+                    .select-items{
+                        margin-left: 20px;
+                        cursor: pointer;
+                        width: 75%;
+                        float: left;
+                        .item{
+                            margin: 0 0 20px 20px;
+                            cursor: pointer;
+                            float: left;
+                            color: #999;
+                        }
                     }
                 }
-            }
-            .select-priceinput{
-                margin-left: 94px;
-                color: #999;
-                .price-input{
-                    width: 56px;
-                    height: 16px;
-                    color: #999;
-                    font-size: 14px;
-                    border: 1px solid #ccc;
-                }
-                .price-btn{
-                    background-color: #c30d23;
-                    color: #fff;
-                    width: 55px;
-                    height: 25px;
-                    font-size: 13px;
-                    text-align: center;
-                    line-height: 23px;
-                    border: none;
-                    margin: 2px 0 0 8px;
-                    display: inline-block;
-                    cursor: pointer;
-                }
-            }
-            .select-class{
-                padding-right: 300px;
-                margin-top: 30px;
-                span{
-                    font-size: 14px;
-                    color: #333;
-                    padding-right: 20px;
-                    float: left;
-                    display: block;
-                }
-                .select-items{
-                    margin-left: 20px;
-                    cursor: pointer;
-                    width: 76%;
-                    float: left;
-                    .item{
-                        margin: 0 0 4px 20px;
-                        cursor: pointer;
+                .select-area{
+                    padding-right: 300px;
+                    margin-top: 30px;
+                    span{
+                        font-size: 14px;
+                        color: #333;
+                        padding-right: 20px;
                         float: left;
-                        color: #999;
+                        display: block;
                     }
-                }
-            }
-            .select-use{
-                padding-right: 300px;
-                margin-top: 30px;
-                span{
-                    font-size: 14px;
-                    color: #333;
-                    padding-right: 20px;
-                    float: left;
-                    display: block;
-                }
-                .select-items{
-                    margin-left: 20px;
-                    cursor: pointer;
-                    width: 76%;
-                    float: left;
-                    .item{
-                        margin: 0 0 4px 20px;
+                    .select-items{
+                        margin-left: 20px;
                         cursor: pointer;
+                        width: 76%;
                         float: left;
-                        color: #999;
+                        .item{
+                            margin: 0 0 4px 20px;
+                            cursor: pointer;
+                            float: left;
+                            color: #999;
+                        }
                     }
                 }
             }
@@ -314,70 +332,12 @@
                 margin-top: 40px;
             }
         }
-        .list-content{
-            .list-item{
-                margin-top: 40px;
-                .list-left{
-                    float: left;
-                    a{
-                        color: #000;
-                        text-decoration: none;
-                        img{
-                            width: 285px;
-                            height: 214px;
-                        }
-                    }
-                }
-                .list-center{
-                    margin-left: 30px;
-                    float: left;
-                    .benefit{
-                        margin-bottom: 30px;
-                        font-size: 20px;
-                        color: #333;
-                        a{
-                            text-decoration: none;
-                        }
-                    }
-                    .introduce{
-                        margin-top: 20px;
-                        font-size: 14px;
-                        color: #666;
-                    }
-                    .built{
-                        margin-top: 20px;
-                        font-size: 14px;
-                        color: #666;
-                    }
-                }
-                .list-right{
-                    text-align: right;
-                    float: right;
-                    .price{
-                        font-size: 20px;
-                        color: #c30d23;
-
-                    }
-                    .update{
-                        font-size: 14px;
-                        color: #666;
-                        margin-top: 20px;
-                    }
-                    .follow{
-                        width: 100px;
-                        height: 36px;
-                        text-align: center;
-                        line-height: 36px;
-                        border: 1px solid #c30d23;
-                        font-size: 16px;
-                        color: #c30d23;
-                        margin-top: 40px;
-                        border-radius: 4px;
-                        margin-left: 45px;
-                        text-decoration: none;
-                        display: inline-block;
-                    }
-                }
+        .pages-tool{
+            margin-top: 30px;
+            font-size: 12px;
+            color: #666;
+            .pages-item{
+                text-align: right;
             }
         }
     }
