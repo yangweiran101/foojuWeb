@@ -36,7 +36,7 @@
             <!--选项卡开始-->
             <div class="top-bar">
                 <div class="top-btn">
-                    <a href="#">
+                    <a href="/storesList">
                         <img src="../assets/img/store.png" alt="">
                         <div class="title">查门店</div>
                         <div class="text">查优质门店</div>

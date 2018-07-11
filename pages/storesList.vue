@@ -8,6 +8,7 @@
                 <span>> </span>
                 <span>找门店</span>
             </div>
+            <!--搜索框开始-->
             <div class="content-search">
                 <input type="text" placeholder="搜索">
                 <span>搜索</span>
@@ -16,9 +17,10 @@
                     地图找房
                 </a>
             </div>
+            <!--搜素框结束-->
+
             <!--选项卡开始-->
-            <div class="select">
-                <div class="content-select">
+            <div class="content-select">
                     <!--区域开始-->
                     <div class="select-address clearfix">
                         <span>区域</span>
@@ -49,13 +51,46 @@
                     </div>
                     <!--筛选分类结束-->
                 </div>
-            </div>
             <!--选项卡结束-->
 
             <!--房源简介开始-->
-
+            <div class="content-list" >
+                <div class="list-commom">
+                    共找到 <span>{{houseCount}}</span>个门店
+                </div>
+                <div class="list-area" v-for="item in houseArr">
+                    <div class="list-item clearfix">
+                        <a href="#" class="item-detail">
+                            <div class="store text">
+                                {{item.name}}
+                            </div>
+                            <div class="renting text">
+                                在租房源<span>{{item.retaling}}</span>套
+                            </div>
+                            <div class="onSale text">
+                                在售二手房<span>{{item.useding}}</span>套
+                            </div>
+                            <div class="phone text">
+                                电话:<span>{{item.f_phone}}转{{item.mobile}}</span>
+                            </div>
+                            <div class="address text">
+                                地址:<span style="color: #333">{{item.address}}</span>
+                            </div>
+                        </a>
+                        <a href="#" class="item-map">
+                            <i class="iconfont icon-map" style="font-size: 20px;margin-right: 10px"></i>
+                            一键地图
+                        </a>
+                    </div>
+                </div>
+                <div class="list-more" @click="getMoreStore()" v-if="this.houseCount>10">
+                    加载更多门店
+                </div>
+                <div class="list-more"  v-if="this.houseCount<=10">
+                    暂无更多门店
+                </div>
+            </div>
             <!--房源简介结束-->
-
 
         </div>
         <Footer></Footer>
@@ -74,7 +109,7 @@
             Footer
         },
         async asyncData(){
-            let r_idData = await axios.get(api.paramToUrl(api.Storelists,{city:"呼和浩特"}))
+            let r_idData = await axios.get(api.paramToUrl(api.regionLists,{city:"呼和浩特"}))
             r_idData.data.data = r_idData.data.data.map(item =>{
                 item.title = item.area;
                 return item;
@@ -96,10 +131,11 @@
                 params: {
                     page_size: 10,
                     page_num: 1,
-                    order: 1
+                    order: 1,
                 },
                 houseCount:0,
-                houseArr:[]
+                houseArr:[],
+                moreArr:[]
             }
         },
         methods:{
@@ -155,6 +191,20 @@
                     loading.close()
                 }).catch(err => {
                     loading.close()
+                })
+            },
+            getMoreStore(){
+                this.params.page_num++;
+                let formData = this.formData;
+                let params = {...this.params};
+                for (let key in formData){
+                    if (formData[key]instanceof Array&&formData[key].length>0){
+                        params[key] = formData[key].map(item => item.id)
+                    }
+                }
+                axios.get(api.paramToUrl(api.Storelists, params)).then(res => {
+                    this.houseArr = [...this.houseArr,...res.data.data];
+                    console.log(res)
                 })
             }
         },
@@ -264,6 +314,8 @@
         }
         .content-select{
             margin-top: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #ccc;
             .select-address{
                 padding-right: 300px;
                 span{
@@ -346,102 +398,78 @@
                 }
 
             }
-            .select-tab{
-                text-align: center;
-                font-size: 16px;
-                color: #bbb;
-                padding: 30px 0;
-                border-bottom: 1px solid #ccc;
-                cursor: pointer;
-            }
-
         }
-        .list-top{
+        .content-list{
             margin-top: 80px;
-            font-size: 30px;
-            color: #333;
-            .list-sort{
-                margin-top: 30px;
-                .btn{
-                    cursor: pointer;
-                    font-size: 18px;
-                    color: #c30d23;
-                    border: 1px solid #c30d23;
-                    background:0 0;
-                    padding: 10px 20px;
-                    border-radius: 20px;
-                    margin-left: 20px;
-                    line-height: 1.15;
-                }
+            span{
+                color: #c30d23;
             }
-            .list-altogether{
-                margin-top: 40px;
+            .list-commom{
+                font-size: 30px;
+                color: #333;
             }
-        }
-        .list-content{
-            .list-item{
-                margin-top: 40px;
-                .list-left{
-                    float: left;
-                    a{
+            .list-area{
+                margin-top: 10px;
+                .list-item{
+                    padding: 20px 0;
+                    border-bottom: 1px solid #ccc;
+                    .item-detail{
                         color: #000;
                         text-decoration: none;
-                        img{
-                            width: 285px;
-                            height: 214px;
+                        .store{
+                            font-size: 20px;
+                            color: #333;
+                            width: 145px;
+                            float: left;
+                        }
+                        .renting {
+                            font-size: 14px;
+                            color: #333;
+                            margin: 7px 0 0 20px;
+                            width: 140px;
+                            float: left;
+                        }
+                        .onSale{
+                            font-size: 14px;
+                            color: #333;
+                            margin: 7px 0 0 20px;
+                            width: 140px;
+                            float: left;
+                        }
+                        .phone{
+                            font-size: 14px;
+                            color: #333;
+                            margin: 7px 0 0 20px;
+                            width: 255px;
+                            float: left;
+                        }
+                        .address{
+                            font-size: 14px;
+                            margin-left: 10px;
+                            width: 220px;
+                            float: left;
                         }
                     }
-                }
-                .list-center{
-                    margin-left: 30px;
-                    float: left;
-                    .benefit{
-                        margin-bottom: 30px;
-                        font-size: 20px;
-                        color: #333;
-                        a{
-                            text-decoration: none;
-                        }
-                    }
-                    .introduce{
-                        margin-top: 20px;
-                        font-size: 14px;
-                        color: #666;
-                    }
-                    .built{
-                        margin-top: 20px;
-                        font-size: 14px;
-                        color: #666;
-                    }
-                }
-                .list-right{
-                    text-align: right;
-                    float: right;
-                    .price{
-                        font-size: 20px;
+                    .item-map{
                         color: #c30d23;
-
-                    }
-                    .update{
-                        font-size: 14px;
-                        color: #666;
-                        margin-bottom: 20px;
-                    }
-                    .follow{
-                        width: 100px;
-                        height: 36px;
-                        text-align: center;
-                        line-height: 36px;
+                        padding: 6px 16px;
                         border: 1px solid #c30d23;
-                        font-size: 16px;
-                        color: #c30d23;
-                        margin-top: 10px;
-                        border-radius: 4px;
-                        margin-left: 45px;
+                        margin-top: -6px;
+                        border-radius: 6px;
+                        float: right;
                         text-decoration: none;
-                        display: inline-block;
+                        cursor: pointer;
                     }
                 }
+            }
+            .list-more{
+                margin: 40px 0 80px;
+                color: #333;
+                border: 1px solid #ccc;
+                text-align: center;
+                cursor: pointer;
+                padding: 22px 0;
+                border-radius: 6px;
             }
         }
 
