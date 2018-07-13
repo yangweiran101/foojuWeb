@@ -40,8 +40,9 @@
                     el._mouseIn = mouseIn;
                     function mouseMove(ev) {
                         ev = ev || event;
+                        let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
                         mouseX = ev.clientX-el.offsetLeft;
-                        mouseY = ev.clientY-el.offsetTop-leftBox.offsetTop;
+                        mouseY = ev.clientY-el.offsetTop-leftBox.offsetTop + scrollTop;
                         let scaleLeft = 0;
                         let scaleTop = 0;
 
@@ -57,7 +58,7 @@
                         }
 
                         if(mouseY > leftBox.offsetHeight - scale.offsetHeight/2){
-                            scaleTop = leftBox.offsetHeight - scale.offsetHeight;
+                            scaleTop =leftBox.offsetHeight - scale.offsetHeight;
                             scale.style.top = scaleTop + "px";
                         }else if(mouseY < scale.offsetHeight/2){
                             scaleTop = 0;
@@ -109,6 +110,7 @@
     .scale{
         width: 237px;
         height: 217px;
+        display: none;
         position: absolute;
         left: 0;
         top: 0;
