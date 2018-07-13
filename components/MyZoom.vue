@@ -16,6 +16,11 @@
 <script>
     export default {
         name: "MyZoom",
+        props:{
+            url:{
+                type:String
+            }
+        },
         directives:{
             scale:{
                 inserted(el,binding,vnode){
@@ -27,24 +32,54 @@
                     let mouseY = 0
 
                     function mouseIn(ev) {
-                        scale.style.display ='none';
+                        scale.style.display ='block';
+                        rightBox.style.display = 'block'
                         leftBox.addEventListener('mousemove',mouseMove);
                         leftBox.addEventListener('mouseleave',mouseOut);
                     }
+                    el._mouseIn = mouseIn;
                     function mouseMove(ev) {
                         ev = ev || event;
                         mouseX = ev.clientX-el.offsetLeft;
                         mouseY = ev.clientY-el.offsetTop-leftBox.offsetTop;
+                        let scaleLeft = 0;
+                        let scaleTop = 0;
+
+                        scale.style.top = mouseY - scale.offsetHeight/2 + "px";
+                        if(mouseX > leftBox.offsetWidth - scale.offsetWidth/2){
+                            scaleLeft = leftBox.offsetWidth - scale.offsetWidth;
+                            scale.style.left = scaleLeft + "px";
+                        }else if(mouseX < scale.offsetWidth/2){
+                            scale.style.left = 0
+                        } else{
+                            scaleLeft = mouseX - scale.offsetWidth/2;
+                            scale.style.left = scaleLeft + "px";
+                        }
+
+                        if(mouseY > leftBox.offsetHeight - scale.offsetHeight/2){
+                            scaleTop = leftBox.offsetHeight - scale.offsetHeight;
+                            scale.style.top = scaleTop + "px";
+                        }else if(mouseY < scale.offsetHeight/2){
+                            scaleTop = 0;
+                            scale.style.top = scaleTop
+                        }else{
+                            scaleTop = mouseY - scale.offsetHeight/2;
+                            scale.style.top = scaleTop + "px";
+                        }
+
+                        rightPic.style.transform = `translate(${-scaleLeft*2.5}px,${-scaleTop*2.5}px)`
                     }
                     function mouseOut() {
                         scale.style.display ='none';
+                        rightBox.style.display = 'none';
                         leftBox.removeEventListener('mousemove',mouseMove)
                     }
 
                     leftBox.addEventListener('mouseenter',mouseIn)
                 },
-                unbind(){
-
+                unbind(el){
+                    let leftBox = el.querySelector('._left-box');
+                    leftBox.removeEventListener('mouseenter',el._mouseIn)
                 }
 
             }
@@ -87,6 +122,7 @@
         height: 542px;
         overflow: hidden;
         border: 1px solid #000;
+        display: none;
         img{
             width: 1480px;
             height: 1150px;
